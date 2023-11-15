@@ -1,0 +1,45 @@
+package in.ganeshsharma.EncryptionSystem;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Main {
+    public Main() {
+        JFrame frame = new JFrame("Encryption & Decryption Software");
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setSize(screenSize.width / 2, screenSize.height / 2);
+        frame.setLocation(screenSize.width / 4, screenSize.height / 4);
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel1 = createColoredPanel(Color.YELLOW);
+        JPanel panel2 = createColoredPanel(Color.GREEN);
+        JPanel panel3 = createColoredPanel(Color.YELLOW);
+
+        ImageIcon image = new ImageIcon("wait.GIF");
+        JLabel im = new JLabel(image);
+        JLabel msg = new JLabel("LOADING............");
+
+        panel1.add(msg);
+        panel2.add(im);
+
+        frame.add(panel1, BorderLayout.NORTH);
+        frame.add(panel2, BorderLayout.CENTER);
+        frame.add(panel3, BorderLayout.SOUTH);
+
+        new Cryptography();
+    }
+
+    public static void main(String[] args) throws Exception {
+        SwingUtilities.invokeLater(() -> {
+            new Main();
+        });
+    }
+
+    private JPanel createColoredPanel(Color color) {
+        JPanel panel = new JPanel();
+        panel.setPreferredSize(new Dimension(100, 100));
+        panel.setBackground(color);
+        return panel;
+    }
+}
